@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './auth/authContext.tsx';
 import { RequireAuth } from './auth/guard.tsx';
 import Layout from './components/Layout';
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
     element: <RequireAuth>
       <UserPage />
     </RequireAuth>,
+  },
+  {
+    path: '/',
+    element: <Navigate to="/login" replace />
   },
   {
     path: '*',
